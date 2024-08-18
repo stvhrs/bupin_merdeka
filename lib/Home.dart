@@ -200,7 +200,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             onTap: _onItemTapped,
           ),
         ),
-        //  const HalamanBanner()
+          const HalamanBanner()
       ],
     );
   }
