@@ -30,7 +30,7 @@ class _HalmanScanState extends State<HalmanScan> {
     width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: Stack(alignment: Alignment.center, children: [
+      body: Stack(alignment: Alignment.bottomCenter, children: [
         Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -63,55 +63,61 @@ class _HalmanScanState extends State<HalmanScan> {
                   color: Colors.white,
                   width: width),
             )),
-        Positioned(
-            bottom: 5,
-            child: Stack(
-                clipBehavior: Clip.none,
-                alignment: Alignment.bottomCenter,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.all(5.0),
-                    child: Image.asset("asset/Halaman_Scan/Manusia2.png",
-                        width: width),
-                  ),
-                  Positioned(
-                    top: 130,
-                    child: Stack(alignment: Alignment.center, children: [
-                      SizedBox(
-                        width: width * 0.2,
-                        height: width * 0.2,
-                        child: ScanningEffect(
-                          enableBorder: false,
-                          scanningColor: Colors.white,
-                          delay: Duration(milliseconds: 100),
-                          duration: Duration(seconds: 2),
-                          scanningLinePadding: EdgeInsets.all(0),
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.of(context).push(CustomRoute(
-                                builder: (context) =>
-                                    const QRViewExample(false),
-                              ));
-                            },
-                            child: Container(
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  color: Colors.transparent,
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(15),
-                                  ),
+        LayoutBuilder(builder: (context, constraint) {
+          return Stack(
+              clipBehavior: Clip.none,
+              alignment: Alignment.bottomCenter,
+              children: [
+                Container(
+                  margin: const EdgeInsets.all(5.0),
+                  child: Image.asset("asset/Halaman_Scan/Manusia2.png",
+                      width: constraint.maxWidth < 550
+                          ? constraint.maxWidth
+                          : constraint.maxWidth * 0.7),
+                ),
+                Positioned(
+                  bottom: constraint.maxWidth < 550
+                      ? constraint.maxWidth * 0.76
+                      : constraint.maxWidth * 0.54,
+                  child: Stack(alignment: Alignment.center, children: [
+                    SizedBox(
+                      width:constraint.maxWidth < 550
+                          ? constraint.maxWidth * 0.2: constraint.maxWidth * 0.15,
+                      height: constraint.maxWidth < 550
+                          ? constraint.maxWidth * 0.2: constraint.maxWidth * 0.15,
+                      child: ScanningEffect(
+                        enableBorder: false,
+                        scanningColor: Colors.white,
+                        delay: Duration(milliseconds: 100),
+                        duration: Duration(seconds: 2),
+                        scanningLinePadding: EdgeInsets.all(0),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(CustomRoute(
+                              builder: (context) => const QRViewExample(false),
+                            ));
+                          },
+                          child: Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: Colors.transparent,
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(15),
                                 ),
-                                child: Icon(
-                                  Icons.qr_code_scanner_rounded,
-                                  color: Colors.white,
-                                  size: width * 0.2,
-                                )),
-                          ),
+                              ),
+                              child: Icon(
+                                Icons.qr_code_scanner_rounded,
+                                color: Colors.white,
+                                size:constraint.maxWidth < 550
+                          ? constraint.maxWidth * 0.2: constraint.maxWidth * 0.15,
+                              )),
                         ),
                       ),
-                    ]),
-                  ),
-                ]))
+                    ),
+                  ]),
+                ),
+              ]);
+        })
       ]),
       backgroundColor: Colors.transparent,
     );

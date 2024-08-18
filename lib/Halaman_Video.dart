@@ -69,7 +69,7 @@ class HalamanVideoState extends State<HalamanVideo>
       _controller = YoutubePlayerController(
         params: const YoutubePlayerParams(
             mute: false,
-            showFullscreenButton: false,
+            showFullscreenButton: true,
             color: "red",
             loop: false,
             strictRelatedVideos: true),
@@ -201,11 +201,13 @@ class HalamanVideoState extends State<HalamanVideo>
                                                   aspectRatio == 9 / 16
                                                       ? const SizedBox()
                                                       : Positioned.fill(
-                                                          child: Opacity( opacity: 0.05,
+                                                          child: Opacity(
+                                                            opacity: 0.05,
                                                             child: Image.asset(
                                                               "asset/Halaman_Scan/Cahaya Halaman Scan@4x.png",
-                                                              repeat: ImageRepeat
-                                                                  .repeatY,
+                                                              repeat:
+                                                                  ImageRepeat
+                                                                      .repeatY,
                                                               color: Theme.of(
                                                                       context)
                                                                   .primaryColor,
@@ -214,8 +216,8 @@ class HalamanVideoState extends State<HalamanVideo>
                                                                           context)
                                                                       .size
                                                                       .width,
-                                                              fit:
-                                                                  BoxFit.fitWidth,
+                                                              fit: BoxFit
+                                                                  .fitWidth,
                                                             ),
                                                           ),
                                                         ),
@@ -223,11 +225,13 @@ class HalamanVideoState extends State<HalamanVideo>
                                                       ? const SizedBox()
                                                       : Positioned.fill(
                                                           top: 0,
-                                                          child: Opacity( opacity: 0.05,
+                                                          child: Opacity(
+                                                            opacity: 0.05,
                                                             child: Image.asset(
                                                               "asset/Halaman_Scan/Cahaya Halaman Scan@4x.png",
-                                                              repeat: ImageRepeat
-                                                                  .repeatY,
+                                                              repeat:
+                                                                  ImageRepeat
+                                                                      .repeatY,
                                                               color: Theme.of(
                                                                       context)
                                                                   .primaryColor,
@@ -236,11 +240,10 @@ class HalamanVideoState extends State<HalamanVideo>
                                                                           context)
                                                                       .size
                                                                       .width,
-                                                              fit:
-                                                                  BoxFit.fitWidth,
+                                                              fit: BoxFit
+                                                                  .fitWidth,
                                                             ),
                                                           ),
-                                                        
                                                         ),
                                                   const Padding(
                                                     padding: EdgeInsets.only(

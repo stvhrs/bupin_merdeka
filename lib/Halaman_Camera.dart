@@ -61,6 +61,7 @@ class _QRViewExampleState extends State<QRViewExample> {
     });
   }
 
+  bool isPhone = false;
   @override
   void didChangeDependencies() {
     scanned = widget.scanned;
@@ -72,134 +73,153 @@ class _QRViewExampleState extends State<QRViewExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget>[
-          Expanded(
-              flex: 4,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  _buildQrView(context),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 1.7,
-                    height: MediaQuery.of(context).size.width / 1.7,
-                    child: const ScanningEffect(
-                      enableBorder: false,
-                      scanningColor: Colors.white,
-                      delay: Duration(seconds: 1),
-                      duration: Duration(seconds: 2),
-                      child: SizedBox(),
-                    ),
-                  ),
-                ],
-              )),
-          Expanded(
-              flex: 2,
-              child:  Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [
-                  Color.fromARGB(255, 164, 3, 3),
-                  const Color.fromARGB(255, 255, 255, 255),
-                ],
-                begin: const FractionalOffset(0.0, 0.0),
-                end: const FractionalOffset(0.0, 1.0),
-                stops: [0.4, 1],
-                tileMode: TileMode.clamp),
-          ),
+      body: LayoutBuilder(builder: (context, constraint) {
+        isPhone = constraint.maxWidth < 550;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+            Expanded(
+                flex: 4,
                 child: Stack(
-                  alignment: Alignment.topCenter,
-                  clipBehavior: Clip.none,
+                  alignment: Alignment.center,
                   children: [
-                    Positioned.fill(
-                      child: Opacity(
-                        opacity: 0.05,
-                        child: Image.asset(
-                          "asset/Halaman_Scan/Cahaya Halaman Scan@4x.png",
-                          width: MediaQuery.of(context).size.width,
-                          color: Colors.white,
-                          fit: BoxFit.fitWidth,
-                          repeat: ImageRepeat.repeat,
-                        ),
+                    _buildQrView(context),
+                    SizedBox(
+                      width: constraint.maxWidth / 1.7,
+                      height: constraint.maxWidth / 1.7,
+                      child: const ScanningEffect(
+                        enableBorder: false,
+                        scanningColor: Colors.white,
+                        delay: Duration(seconds: 1),
+                        duration: Duration(seconds: 2),
+                        child: SizedBox(),
                       ),
                     ),
-                    Positioned(
-                      top: 1,
-                      left: 1,
-                      child: Container(
-                        padding: const EdgeInsets.all(8.0),
-                        child: IconButton.filled(
-                            style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all(Colors.white)),
+                  ],
+                )),
+            Expanded(
+                flex: 2,
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient:isPhone? LinearGradient(
+                        colors: [
+                          Color.fromARGB(255, 164, 3, 3),
+                          const Color.fromARGB(255, 255, 255, 255),
+                        ],
+                        begin: const FractionalOffset(0.0, 0.0),
+                        end: const FractionalOffset(0.0, 1.0),
+                        stops: [0.4, 1],
+                        tileMode: TileMode.clamp):LinearGradient(colors: [  Color.fromARGB(255, 164, 3, 3),  Color.fromARGB(255, 164, 3, 3),]),
+                  ),
+                  child: Stack(
+                    alignment: Alignment.topCenter,
+                    clipBehavior: Clip.none,
+                    children: [
+                      Positioned.fill(
+                        child: Opacity(
+                          opacity: 0.05,
+                          child: Image.asset(
+                            "asset/Halaman_Scan/Cahaya Halaman Scan@4x.png",
+                            width: constraint.maxWidth,
                             color: Colors.white,
-                            highlightColor: Colors.grey,
-                            onPressed: () {
-                              Navigator.pop(context, false);
-                            },
-                            icon: Icon(
-                              Icons.arrow_back_rounded,
-                              color: Theme.of(context).primaryColor,
+                            fit: BoxFit.fitWidth,
+                            repeat: ImageRepeat.repeat,
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 1,
+                        left: 1,
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: IconButton.filled(
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all(Colors.white)),
+                              color: Colors.white,
+                              highlightColor: Colors.grey,
+                              onPressed: () {
+                                Navigator.pop(context, false);
+                              },
+                              icon: Icon(
+                                Icons.arrow_back_rounded,
+                                color: Theme.of(context).primaryColor,
+                              )),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: SizedBox(
+                            width: constraint.maxWidth,
+                            child: Opacity(
+                              opacity: 0.5,
+                              child: Image.asset(
+                                "asset/Halaman_Scan/merdeka.png",
+                                color: Theme.of(context).primaryColor,
+                                scale: 1,
+                              ),
                             )),
                       ),
-                    ), Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          child: Opacity(opacity:0.5,
-                            child: Image.asset(
-                              "asset/Halaman_Scan/merdeka.png",color: Theme.of(context).primaryColor,
-                              scale: 1,
-                            ),
-                          )),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          child: Image.asset(
-                            "asset/Halaman_Scan/Hasan Scan2.png",
-                            scale: 1,
-                          )),
-                    ),
-                    Positioned(
-                      left: 10,
-                      top: 90,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 16),
-                        child: Text(
-                          "Scan",
-                          style: TextStyle(
-                            fontSize: 40,
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            fontWeight: FontWeight.w900,
+                      Positioned.fill(
+                        child: Row(
+                          children: [
+                            Spacer(),
+                            SizedBox(
+                                width: constraint.maxWidth * 0.5,
+                                child: Image.asset(
+                                  "asset/Halaman_Scan/Hasan Scan2.png",
+                                )),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        left: 10,
+                        top: isPhone
+                            ? constraint.maxHeight / 8
+                            : constraint.maxHeight / 8.5,
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 16),
+                          child: Column(
+                            children: [
+                              Text(
+                                "Scan",
+                                style: TextStyle(
+                                  fontSize: isPhone
+                                      ? constraint.maxWidth / 10
+                                      : constraint.maxWidth / 12.5,
+                                  color: Color.fromARGB(255, 255, 255, 255),
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                        left: 10,
-                        top: 130,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 16),
-                          child: Text(
-                            "Akses Video & Soal",
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700,
+                      Positioned(
+                          left: 10,
+                          top: isPhone
+                              ? constraint.maxHeight / 6
+                              : constraint.maxHeight / 5.5,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 16),
+                            child: Text(
+                              "Akses Video & Soal",
+                              style: TextStyle(
+                                fontSize: isPhone
+                                    ? constraint.maxWidth / 20
+                                    : constraint.maxWidth / 25,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
-                          ),
-                        )),
-                    
-                  ],
-                ),
-              )),
-        ],
-      ),
+                          )),
+                    ],
+                  ),
+                )),
+          ],
+        );
+      }),
     );
   }
 

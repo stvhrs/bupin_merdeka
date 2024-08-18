@@ -44,111 +44,123 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       showModalBottomSheet(
           context: context,
           builder: (builder) {
-            return
-               Column(mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(CustomRoute(
-                            builder: (context) => const HalamanSoal(
-                                "https://tim.bupin.id/cbtakm/login.php?6666",
-                                "Bank Soal SD/MI",
-                                false,
-                                ""),
-                          ));
-                        },
-                        child: Container(
-                            color:
-                                const Color.fromRGBO(205, 32, 49, 0.1),
-                            child: Row(children: [
-                              Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Image.asset(
-                                    "asset/Halaman_Latihan_PAS&PTS/Icon SD@4x.png",
-                                    width: 50),
-                              ),
-                              const Spacer(),
-                              const Text(
-                                "SD/MI",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    color: Color.fromRGBO(205, 32, 49, 1),
-                                    fontSize: 18),
-                              ),
-                              const Spacer(),
-                              const Spacer(),
-                            ])),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(CustomRoute(
-                            builder: (context) => const HalamanSoal(
-                                "https://tim.bupin.id/cbtakm/login.php?7777",
-                                'Bank Soal SMP/MTS',
-                                false,
-                                ""),
-                          ));
-                        },
-                        child: Container(
-                            color:
-                                const Color.fromRGBO(58, 88, 167, 0.1),
-                            child: Row(children: [
-                              Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Image.asset(
-                                    "asset/Halaman_Latihan_PAS&PTS/Icon SMP@4x.png",
-                                    width: 50),
-                              ),
-                              const Spacer(),
-                              const Text(
-                                "SMP/MTS",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    color: Color.fromRGBO(58, 88, 167, 1),
-                                    fontSize: 18),
-                              ),
-                              const Spacer(),
-                              const Spacer(),
-                            ])),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(CustomRoute(
-                            builder: (context) => const HalamanSoal(
-                                "https://tim.bupin.id/cbtakm/login.php?9999",
-                                'Bank Soal SMA/MA',
-                                false,
-                                ""),
-                          ));
-                        },
-                        child: Container(
-                            color:
-                                const Color.fromRGBO(120, 163, 215, 0.1),
-                            child: Row(children: [
-                              Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Image.asset(
-                                    "asset/Halaman_Latihan_PAS&PTS/Icon SMA@4x.png",
-                                    width: 50),
-                              ),
-                              const Spacer(),
-                              const Text(
-                                "SMA/MA",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    color: Color.fromRGBO(120, 163, 215, 1),
-                                    fontSize: 18),
-                              ),
-                              const Spacer(),
-                              const Spacer(),
-                            ])),
-                      ),
-                    ],
-                  );
-             
-              
-            
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(CustomRoute(
+                      builder: (context) => const HalamanSoal(
+                          "https://tim.bupin.id/cbtakm/login.php?6666",
+                          "Bank Soal SD/MI",
+                          false,
+                          ""),
+                    ));
+                  },
+                  child: Container(
+                      color: const Color.fromRGBO(205, 32, 49, 0.1),
+                      child: Row(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Image.asset(
+                              "asset/Halaman_Latihan_PAS&PTS/Icon SD@4x.png",
+                              width: 50),
+                        ),
+                        const Spacer(),
+                        const Text(
+                          "SD/MI",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: Color.fromRGBO(205, 32, 49, 1),
+                              fontSize: 18),
+                        ),
+                        const Spacer(),
+                  Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Image.asset(
+                              "asset/Halaman_Latihan_PAS&PTS/Icon SMA@4x.png",
+                              color: Colors.transparent,
+                              width: 50),
+                        ),
+                      ])),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(CustomRoute(
+                      builder: (context) => const HalamanSoal(
+                          "https://tim.bupin.id/cbtakm/login.php?7777",
+                          'Bank Soal SMP/MTS',
+                          false,
+                          ""),
+                    ));
+                  },
+                  child: Container(
+                      color: const Color.fromRGBO(58, 88, 167, 0.1),
+                      child: Row(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Image.asset(
+                              "asset/Halaman_Latihan_PAS&PTS/Icon SMP@4x.png",
+                              width: 50),
+                        ),
+                        const Spacer(),
+                        const Text(
+                          "SMP/MTS",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: Color.fromRGBO(58, 88, 167, 1),
+                              fontSize: 18),
+                        ),
+                        const Spacer(),
+                    Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Image.asset(
+                              "asset/Halaman_Latihan_PAS&PTS/Icon SMA@4x.png",
+                              color: Colors.transparent,
+                              width: 50),
+                        ),
+                      ])),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(CustomRoute(
+                      builder: (context) => const HalamanSoal(
+                          "https://tim.bupin.id/cbtakm/login.php?9999",
+                          'Bank Soal SMA/MA',
+                          false,
+                          ""),
+                    ));
+                  },
+                  child: Container(
+                      color: const Color.fromRGBO(120, 163, 215, 0.1),
+                      child: Row(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Image.asset(
+                              "asset/Halaman_Latihan_PAS&PTS/Icon SMA@4x.png",
+                              width: 50),
+                        ),
+                        const Spacer(),
+                        const Text(
+                          "SMA/MA",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: Color.fromRGBO(120, 163, 215, 1),
+                              fontSize: 18),
+                        ),
+                        const Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Image.asset(
+                              "asset/Halaman_Latihan_PAS&PTS/Icon SMA@4x.png",
+                              color: Colors.transparent,
+                              width: 50),
+                        ),
+                      ])),
+                ),
+              ],
+            );
           });
     }
   }
@@ -188,7 +200,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             onTap: _onItemTapped,
           ),
         ),
-        const HalamanBanner()
+        //  const HalamanBanner()
       ],
     );
   }
